@@ -7,8 +7,8 @@
 ## 1. Toolbox Setup
 ```bash
 # Create persistent development environment
-toolbox create --container fedora-toolbox-40
-toolbox enter fedora-toolbox-40
+toolbox create jellyfin
+toolbox enter jellyfin
 
 # Install essential packages (inside toolbox)
 sudo dnf install -y podman-compose vim git curl wget
