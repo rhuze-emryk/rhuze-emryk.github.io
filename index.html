@@ -3,68 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atomic Linux Docs</title>
+    <title>Please Don't Make Me Install Linux</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Literata:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+        
+        :root {
+            --background: #f8f5f0;
+            --text-color: #3a2f28;
+            --heading-color: #c45d3c;
+            --accent-color: #5f9ea5;
+            --button-color: #d9a566;
+            --button-hover: #c9884a;
+            --border-color: #e0d8cc;
+            --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-heading: 'Literata', Georgia, serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #3c2f2f;
-            background-color: #f0f0f0;
+            font-family: var(--font-main);
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--background);
             max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
         }
+
         h1 {
+            font-family: var(--font-heading);
             font-size: 2.8rem;
             margin-bottom: 1.5rem;
+            color: var(--heading-color);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
         }
+
         p {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
+            font-size: 1.15rem;
+            margin-bottom: 1.8rem;
         }
+
         .navigation {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
         }
+
         .nav-button {
-            padding: 10px 25px;
+            padding: 12px 24px;
             background-color: transparent;
-            color: #3c2f2f;
-            border: 2px solid #3c2f2f;
+            color: var(--text-color);
+            border: 2px solid var(--button-color);
             text-decoration: none;
-            font-size: 1rem;
-            transition: background-color 0.3s;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            font-weight: 500;
         }
+
         .nav-button:hover {
-            background-color: #e0e0e0;
+            background-color: var(--button-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
+
+        .tagline {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            font-style: italic;
+            font-weight: 500;
+        }
+
         footer {
             margin-top: 4rem;
-            font-size: 0.9rem;
-            color: #666;
+            font-size: 0.95rem;
+            color: #78655d;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--heading-color);
+            text-decoration: none;
+        }
+
+        .audience {
+            background-color: rgba(95, 158, 165, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .audience h2 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .audience ul {
+            margin-left: 1.5rem;
+        }
+
+        .audience li {
+            margin-bottom: 0.7rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            p {
+                font-size: 1.05rem;
+            }
+            
+            .navigation {
+                flex-direction: column;
+            }
+            
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
     <main>
-        <h1>Atomic Linux Docs</h1>
+        <h1>Please Don't Make Me Install Linux</h1>
+        
+        <div class="tagline">A guide for the reluctant, the confused, and the mildly terrified.</div>
         
         <p>
-            Documentation, tips, tricks, and solutions for using Atomic (immutable) Linux 
-            distributions like Fedora Silverblue/Kinoite, openSUSE MicroOS, and others.
+            Look, I get it. You've heard Linux is amazing but the thought of installation makes you want to hide 
+            under your desk. Maybe someone told you to "just use the terminal" and now you're questioning your 
+            life choices. I've been there, and that's exactly why this site exists.
+        </p>
+        
+        <p>
+            I'm documenting everything I wish someone had told me about Atomic Linux distributions 
+            (sometimes called immutable distributions) – the good, the bad, and the "why is my screen 
+            suddenly filled with error messages??" This is Linux without the gatekeeping, the jargon, 
+            or the assumption that you enjoy pain.
+        </p>
+        
+        <div class="audience">
+            <h2>Who's This For?</h2>
+            <ul>
+                <li><strong>Accidental Linux Users</strong> — Did your IT department force Fedora Silverblue on you? We'll help you survive.</li>
+                <li><strong>The Linux-Curious</strong> — Heard that atomic distros are more stable and secure? Let's explore without the stress.</li>
+                <li><strong>Tech-Savvy Explorers</strong> — Want to understand the benefits of atomic updates without wading through forums? We've got you.</li>
+                <li><strong>Future-Focused Users</strong> — As traditional distros evolve toward immutability, get ahead of the curve in a friendly way.</li>
+            </ul>
+        </div>
+        
+        <p>
+            Whether you're using Fedora Silverblue, Kinoite, openSUSE MicroOS, or any other atomic distro, 
+            this site aims to make your experience less painful and more productive. And maybe, just maybe, 
+            you'll even start to enjoy it. (No promises though.)
         </p>
         
         <div class="navigation">
-            <a href="docs/" class="nav-button">Documentation</a>
-            <a href="docs/Jellyfin-on-Atomic-distro.html" class="nav-button">Jellyfin Guide</a>
-            <a href="https://github.com/rhuze-emryk/Atomic-Linux-Docs" class="nav-button">GitHub</a>
+            <a href="docs/" class="nav-button">Survival Guides</a>
+            <a href="docs/immutable-distros.html" class="nav-button">Distro Decoder</a>
+            <a href="https://github.com/rhuze-emryk/Atomic-Linux-Docs" class="nav-button">The Code Stuff</a>
         </div>
     </main>
     
     <footer>
-        <p>© 2025 Emryk™ - Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+        <p>© 2025 Emryk™ - Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> - Made with patience and occasional frustration.</p>
     </footer>
 </body>
 </html>
