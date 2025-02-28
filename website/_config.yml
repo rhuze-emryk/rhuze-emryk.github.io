@@ -16,7 +16,7 @@ sass:
 theme: minima
 plugins:
   - jekyll-feed
-+ permalink: pretty
+permalink: pretty
 
 collections_dir: . # Your collections are in the root directory
 collections:

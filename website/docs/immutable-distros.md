@@ -1,6 +1,7 @@
 ---
 layout: default
 title: The Ultimate Guide to Atomic Linux Distributions
+permalink: /docs/immutable-distros.html
 ---
 
 # The Ultimate Guide to Atomic Linux Distributions

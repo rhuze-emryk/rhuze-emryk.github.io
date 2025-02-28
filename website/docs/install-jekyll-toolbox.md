@@ -1,6 +1,7 @@
 ---
 layout: default
 title: The Ultimate Guide to Atomic Linux Distributions
+permalink: /docs/install-jekyll-toolbox/
 ---
 
 # Installing Jekyll on an Immutable Linux Distribution (e.g., Aurora Linux/Fedora Silverblue) with Toolbox

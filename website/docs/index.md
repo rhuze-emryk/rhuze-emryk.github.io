@@ -19,7 +19,7 @@ Wondering what "immutable" and "atomic" distributions actually mean? This guide 
 
 ## Installation & Setup Guides
 
-### [Setting Up Jellyfin Media Server on Fedora Kinoite]({{ "/docs/Jellyfin-on-Atomic-distro.html" | relative_url }})
+### [Setting Up Jellyfin Media Server on Fedora Atomic Desktops]({{ "/docs/Jellyfin-on-Atomic-distro.html" | relative_url }})
 
 Create your own media streaming service on an atomic Linux distribution. This guide covers:
 
@@ -31,7 +31,7 @@ Create your own media streaming service on an atomic Linux distribution. This gu
 
 ## Toolbox Guides
 
-### [Installing Jekyll in Toolbox]({{ "/docs/jekyll-toolbox-install.md" | relative_url }})
+### [Installing Jekyll in Toolbox]({{ "/docs/install-jekyll-toolbox" | relative_url }})
 
 Learn how to set up Jekyll static site generator within a Toolbox container on an immutable Linux distribution.
 

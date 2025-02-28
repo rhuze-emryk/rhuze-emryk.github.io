@@ -80,3 +80,22 @@ a:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+.support-button {
+    display: inline-block;
+    background-color: #d9a566;
+    color: #3a2f28;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+}
+
+.support-button:hover {
+    background-color: #c9884a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: #3a2f28;
+}

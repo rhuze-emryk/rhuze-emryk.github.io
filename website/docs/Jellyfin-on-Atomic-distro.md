@@ -1,10 +1,10 @@
 ---
 layout: default
-title: "Jellyfin on Atomic Linux"
-date: 2025-02-27
+title: "Setting Up Jellyfin Media Server on Fedora Atomic Desktops"
+permalink: /docs/Jellyfin-on-Atomic-distro.html
 ---
 
-# Setting Up Jellyfin Media Server on Fedora Kinoite
+# Setting Up Jellyfin Media Server on Fedora Atomic Desktops
 
 <div class="intro-note">
     <p>
