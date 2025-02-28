@@ -1,3 +1,10 @@
+---
+layout: default
+title: The Ultimate Guide to Atomic Linux Distributions
+permalink: /docs/toolbox-cheatsheet.html
+---
+
+
 # Toolbx Cheatsheet
 
 A container management tool for Linux development environments using Podman/Docker. [Official Docs](https://containertoolbx.org/)

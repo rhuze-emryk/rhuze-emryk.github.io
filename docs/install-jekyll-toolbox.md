@@ -1,8 +1,8 @@
 ---
 layout: default
 title: The Ultimate Guide to Atomic Linux Distributions
+permalink: /docs/install-jekyll-toolbox/
 ---
-
 
 # Installing Jekyll on an Immutable Linux Distribution (e.g., Aurora Linux/Fedora Silverblue) with Toolbox
 
@@ -114,4 +114,4 @@ This guide provides a robust method for installing and using Jekyll on an immuta
     *   For package issues, try `sudo dnf clean all` and `sudo dnf makecache`.
 * **Multiple Toolboxes:** For complete isolation, create different Toolbox containers for different projects.
 
-This Markdown file provides a complete and corrected guide for installing Jekyll within Toolbox on an immutable Linux distribution, suitable for downloading and future reference. It covers all the necessary steps, troubleshooting tips, and best practices for a smooth and reliable Jekyll development environment.
+
