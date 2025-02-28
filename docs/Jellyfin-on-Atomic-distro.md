@@ -1,3 +1,9 @@
+---
+layout: default
+title: The Ultimate Guide to Atomic Linux Distributions
+---
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

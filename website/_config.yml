@@ -1,0 +1,34 @@
+title: Please Don't Make Me Install Linux
+email: rh@emryk.com
+description: >-
+  A guide for the reluctant, the confused, and those looking for
+  practical solutions to Atomic Linux challenges.
+baseurl: ""
+url: "https://dont-make-me-install-linux-pls.lol"
+github_username: rhuze-emryk
+
+# Build settings
+markdown: kramdown
+sass:
+  sass_dir: _sass
+  style: compressed
+  implementation: sass-embedded
+theme: minima
+plugins:
+  - jekyll-feed
+permalink: pretty
+
+collections_dir: . # Your collections are in the root directory
+collections:
+  docs:
+    output: true    # Generate HTML files for docs collection
+    permalink: /docs/:path/ # URL structure for docs pages
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+
