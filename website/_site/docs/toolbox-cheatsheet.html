@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Literata:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">	
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Ultimate Guide to Atomic Linux Distributions | Please Don't Make Me Install Linux</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+  <header>
+    <div class="nav-header">
+    <a href="/" class="nav-button">Home</a>
+    <a href="/docs/" class="nav-button">Survival Guides</a>
+    <a href="/about/" class="nav-button">About</a>
+</div>
+
+  </header>	
+  <main>
+    <h1 id="toolbx-cheatsheet">Toolbx Cheatsheet</h1>
+
+<p>A container management tool for Linux development environments using Podman/Docker. <a href="https://containertoolbx.org/">Official Docs</a></p>
+
+<h2 id="installation">Installation</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Fedora</span>
+<span class="nb">sudo </span>dnf <span class="nb">install </span>toolbox podman
+
+<span class="c"># Ubuntu (20.04+)</span>
+<span class="nb">sudo </span>apt <span class="nb">install </span>toolbox podman
+
+<span class="c"># Arch Linux</span>
+<span class="nb">sudo </span>pacman <span class="nt">-S</span> toolbox podman
+</code></pre></div></div>
+
+<h2 id="basic-commands">Basic Commands</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Command</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">toolbox create --distro &lt;name&gt; &lt;container-name&gt;</code></td>
+      <td>Create new container</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">toolbox enter &lt;container-name&gt;</code></td>
+      <td>Enter container shell</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">toolbox list</code></td>
+      <td>List containers</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">toolbox rm &lt;container-name&gt;</code></td>
+      <td>Delete container</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">toolbox run &lt;container-name&gt; &lt;command&gt;</code></td>
+      <td>Run command in container</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">toolbox stop &lt;container-name&gt;</code></td>
+      <td>Stop container</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="podmandocker-integration">Podman/Docker Integration</h2>
+
+<h3 id="custom-images">Custom Images</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># From Docker Hub</span>
+toolbox create <span class="nt">--image</span> docker://alpine alpine-docker
+
+<span class="c"># From Podman local image</span>
+toolbox create <span class="nt">--image</span> podman://localhost/my-image my-podman-container
+
+<span class="c"># Build and use custom image</span>
+podman build <span class="nt">-t</span> my-toolbox-image <span class="nb">.</span>
+toolbox create <span class="nt">--image</span> my-toolbox-image custom-container
+</code></pre></div></div>
+
+<h3 id="manage-containers">Manage Containers</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># List Podman containers (including Toolbx)</span>
+podman ps <span class="nt">-a</span>
+
+<span class="c"># Inspect Toolbx container</span>
+podman inspect &lt;container-name&gt;
+
+<span class="c"># Access Podman from within Toolbx</span>
+toolbox enter my-container
+podman <span class="nt">--version</span>
+</code></pre></div></div>
+
+<h2 id="key-features">Key Features</h2>
+
+<ol>
+  <li><strong>Shared Home</strong>: Host’s <code class="language-plaintext highlighter-rouge">$HOME</code> mounted at <code class="language-plaintext highlighter-rouge">/home/$USER</code></li>
+  <li><strong>Image Sources</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Official images</span>
+toolbox create <span class="nt">--distro</span> ubuntu <span class="nt">--release</span> 22.04
+
+<span class="c"># Custom registries</span>
+toolbox create <span class="nt">--image</span> quay.io/centos/centos:stream9
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Storage Management</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Show Podman storage</span>
+podman system <span class="nb">df</span>
+
+<span class="c"># Cleanup unused images</span>
+podman image prune
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="workflow-examples">Workflow Examples</h2>
+
+<p><strong>Create Dev Environment</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>toolbox create <span class="nt">--distro</span> fedora <span class="nt">--release</span> 38 dev
+toolbox enter dev
+<span class="nb">sudo </span>dnf <span class="nb">install</span> @development-tools
+</code></pre></div></div>
+
+<p><strong>Run GUI App</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Host machine first:</span>
+xhost +local:
+toolbox run <span class="nt">--container</span> dev firefox
+</code></pre></div></div>
+
+<p><strong>Temporary Workspace</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>toolbox create <span class="nt">--ephemeral</span> <span class="nt">--image</span> docker://alpine temp-env
+toolbox enter temp-env
+apk add git
+<span class="c"># Container destroyed after exit</span>
+</code></pre></div></div>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p><strong>Permission Issues</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Ensure subuid/subgid configured</span>
+<span class="nb">sudo </span>usermod <span class="nt">--add-subuids</span> 100000-165535 <span class="nt">--add-subgids</span> 100000-165535 <span class="nv">$USER</span>
+</code></pre></div></div>
+
+<p><strong>Reset Toolbx</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>podman system reset  <span class="c"># WARNING: Deletes all containers/images</span>
+<span class="nb">rm</span> <span class="nt">-rf</span> ~/.local/share/containers/toolbox
+</code></pre></div></div>
+
+<p><strong>Check Backend</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Verify Podman is default</span>
+toolbox <span class="nt">--log-level</span> debug create test-container | <span class="nb">grep</span> <span class="s1">'Using backend'</span>
+</code></pre></div></div>
+
+<h2 id="appendix-podman-vs-docker">Appendix: Podman vs Docker</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Podman</th>
+      <th>Docker</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Daemon</td>
+      <td>Daemonless</td>
+      <td>Requires dockerd</td>
+    </tr>
+    <tr>
+      <td>Root permissions</td>
+      <td>Rootless mode supported</td>
+      <td>Typically needs root</td>
+    </tr>
+    <tr>
+      <td>Toolbx integration</td>
+      <td>Default backend</td>
+      <td>Works via socket</td>
+    </tr>
+    <tr>
+      <td>Compose files</td>
+      <td><code class="language-plaintext highlighter-rouge">podman-compose</code></td>
+      <td><code class="language-plaintext highlighter-rouge">docker-compose</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<blockquote>
+  <p><strong>Note</strong>: Toolbx uses Podman by default. For Docker compatibility:</p>
+  <ul>
+    <li>Install <code class="language-plaintext highlighter-rouge">docker-compose</code> in containers when needed</li>
+    <li>Use <code class="language-plaintext highlighter-rouge">--device</code> flags for hardware access</li>
+    <li>Share Docker socket: <code class="language-plaintext highlighter-rouge">toolbox create --volume /var/run/docker.sock:/var/run/docker.sock</code></li>
+  </ul>
+</blockquote>
+
+
+  </main>
+  
+  <footer>
+    <p>© 2025 Emryk™ - Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+  </footer>
+</body>
+</html>

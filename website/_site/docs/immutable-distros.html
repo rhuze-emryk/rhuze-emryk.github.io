@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Literata:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">	
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Ultimate Guide to Atomic Linux Distributions | Please Don't Make Me Install Linux</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+  <header>
+    <div class="nav-header">
+    <a href="/" class="nav-button">Home</a>
+    <a href="/docs/" class="nav-button">Survival Guides</a>
+    <a href="/about/" class="nav-button">About</a>
+</div>
+
+  </header>	
+  <main>
+    <h1 id="the-ultimate-guide-to-atomic-linux-distributions">The Ultimate Guide to Atomic Linux Distributions</h1>
+
+<blockquote>
+  <p>If you’ve been hearing terms like “immutable,” “atomic,” or “transactional” tossed around in Linux discussions, you’re not alone. This guide breaks down what these fancy terms actually mean and helps you figure out if these newfangled distros are right for you.</p>
+</blockquote>
+
+<p><strong>Quick terminology note:</strong><br />
+These distributions are often called both <em>atomic</em> (referring to their all-or-nothing update approach) and <em>immutable</em> (referring to their read-only system design). Both terms are correct, but distributions like Fedora officially use “Atomic” in their branding. We’ll use both terms throughout this guide to help you recognize them in the wild.</p>
+
+<h2 id="what-even-is-an-atomic-linux-distribution">What Even Is an “Atomic” Linux Distribution?</h2>
+
+<p>An atomic Linux distribution is an operating system where the core components, including the root file system, are read-only. In human terms: the system protects itself from both you and potential attackers by locking down important system files.</p>
+
+<p>Why would anyone want this? Well, there are some solid benefits:</p>
+
+<ul>
+  <li><strong>It’s harder to break things:</strong> You (or malware) can’t accidentally modify critical system files.</li>
+  <li><strong>System stability:</strong> Your computer becomes more reliable since core components can’t get corrupted.</li>
+  <li><strong>Updates are all-or-nothing:</strong> Updates either complete successfully or don’t happen at all (no more half-updated systems).</li>
+  <li><strong>Easy rollbacks:</strong> If something goes wrong, you can roll back to a previous working state with a simple reboot.</li>
+  <li><strong>Predictability:</strong> Every system with the same version has identical system files—no more “works on my machine” syndrome.</li>
+</ul>
+
+<h2 id="the-major-players-in-atomic-linux">The Major Players in Atomic Linux</h2>
+
+<h3 id="fedoras-atomic-desktops">Fedora’s Atomic Desktops</h3>
+
+<p>Fedora has gone all-in on immutability with several variants that use OSTree technology (think Git for your operating system):</p>
+
+<ul>
+  <li><strong>Fedora Silverblue:</strong> The GNOME version—sleek, modern, and probably the most mature of the bunch<br />
+<a href="https://silverblue.fedoraproject.org/">Project Website</a></li>
+  <li><strong>Fedora Kinoite:</strong> The KDE Plasma version—more customizable and Windows-like<br />
+<a href="https://kinoite.fedoraproject.org/">Project Website</a></li>
+  <li><strong>Fedora Sway Atomic:</strong> For the keyboard ninjas who love tiling window managers<br />
+<a href="https://fedoraproject.org/atomic-desktops/sway/">Project Website</a></li>
+  <li><strong>Fedora Budgie Atomic:</strong> A friendly middle ground between GNOME and traditional desktops<br />
+<a href="https://fedoraproject.org/atomic-desktops/budgie/">Project Website</a></li>
+</ul>
+
+<p>These variants use Flatpak for installing desktop apps and Toolbox/Distrobox for development work. It might take some adjustment at first, but many people find it liberating once they get used to it.</p>
+
+<h3 id="opensuses-immutable-options">openSUSE’s Immutable Options</h3>
+
+<p>openSUSE offers its own take on immutability with Btrfs and transactional updates:</p>
+
+<ul>
+  <li><strong>openSUSE MicroOS:</strong> Originally for servers, now available for desktops too<br />
+<a href="https://microos.opensuse.org/">Project Website</a></li>
+  <li><strong>openSUSE Aeon:</strong> Desktop-focused distribution using GNOME<br />
+<a href="https://aeon.opensuse.org/">Project Website</a></li>
+  <li><strong>openSUSE Kalpa:</strong> Desktop-focused distribution using KDE Plasma<br />
+<a href="https://kalpa.opensuse.org/">Project Website</a></li>
+</ul>
+
+<h3 id="vanilla-os">Vanilla OS</h3>
+
+<p>Vanilla OS 2.0 is based on Debian Sid and is designed to be beginner-friendly while still being immutable. It features its own package manager called Apx that installs software in containers to keep your base system clean.<br />
+<a href="https://vanillaos.org/">Project Website</a></p>
+
+<h3 id="endless-os">Endless OS</h3>
+
+<p>One of the pioneers in desktop immutability, Endless OS was designed for areas with limited internet connectivity. It’s very user-friendly and comes with lots of pre-installed applications.<br />
+<a href="https://endlessos.com/">Project Website</a></p>
+
+<h3 id="nixos-and-friends">NixOS and Friends</h3>
+
+<p>NixOS takes a unique approach to immutability through its declarative package management:</p>
+
+<ul>
+  <li><strong>NixOS:</strong> Describe what you want, and it makes it happen<br />
+<a href="https://nixos.org/">Project Website</a></li>
+  <li><strong>SnowflakeOS:</strong> A more beginner-friendly take on NixOS<br />
+<a href="https://snowflakeos.org/">Project Website</a></li>
+</ul>
+
+<p>NixOS has a steep learning curve but inspires almost cult-like devotion from its users. Once you go Nix, you might never go back.</p>
+
+<h3 id="other-noteworthy-mentions">Other Noteworthy Mentions</h3>
+
+<ul>
+  <li><strong>Universal Blue:</strong> Custom Fedora Atomic images with extra features (Bluefin for developers, Bazzite for gaming)<br />
+<a href="https://universal-blue.org/">Project Website</a></li>
+  <li><strong>SteamOS 3.x:</strong> The immutable Arch-based OS that powers the Steam Deck.</li>
+  <li><strong>ChromeOS:</strong> Google’s immutable operating system—pioneering many of these concepts.</li>
+</ul>
+
+<h2 id="finding-your-perfect-match">Finding Your Perfect Match</h2>
+
+<p>Not all atomic distros are created equal. Here’s what to consider:</p>
+
+<ol>
+  <li><strong>Desktop preference:</strong> Do you want GNOME, KDE, or something else?</li>
+  <li><strong>Package availability:</strong> Some distros have more software readily available than others.</li>
+  <li><strong>Community support:</strong> Larger communities mean more help when you get stuck.</li>
+  <li><strong>Learning curve:</strong> Some options (looking at you, NixOS) require more technical know-how.</li>
+  <li><strong>Hardware compatibility:</strong> Newer distros might have issues with unusual hardware.</li>
+</ol>
+
+<p>For most people dipping their toes into immutable Linux, Fedora Silverblue or Kinoite are excellent starting points. They offer good documentation, active communities, and relatively gentle learning curves.</p>
+
+<h2 id="the-reality-check">The Reality Check</h2>
+
+<p>Immutable distributions are different, and there will be moments of frustration as you adjust. You might find yourself asking:</p>
+
+<ul>
+  <li>“Why can’t I just <code class="language-plaintext highlighter-rouge">apt install</code> or <code class="language-plaintext highlighter-rouge">dnf install</code> things anymore?”</li>
+  <li>“Where do I put my development environments?”</li>
+  <li>“How do I customize system settings that seem locked down?”</li>
+</ul>
+
+<p>These are normal questions, and they do have answers—but they might require a change in your workflow. The trade-off is a more reliable, secure system that’s harder to break and easier to maintain over time.</p>
+
+<p>I remember when I first installed Fedora Silverblue—the struggle to install my favorite development tools eventually gave way to the realization that Toolbox was the way to go. Once you get past the learning curve, you might wonder how you ever tolerated traditional distributions.</p>
+
+<h2 id="common-workflows-in-atomic-distros">Common Workflows in Atomic Distros</h2>
+
+<h3 id="installing-applications">Installing Applications</h3>
+
+<p>Instead of traditional package managers, you’ll typically use:</p>
+
+<ul>
+  <li><strong>Flatpak:</strong> For most desktop applications (browsers, office suites, media players, etc.)</li>
+  <li><strong>Toolbox/Distrobox:</strong> For development tools and command-line utilities</li>
+  <li><strong>rpm-ostree:</strong> For system packages (used sparingly and only when absolutely necessary)</li>
+</ul>
+
+<h3 id="development-work">Development Work</h3>
+
+<p>Most development occurs inside containers. In practice, this means:</p>
+
+<ol>
+  <li>Create a Toolbox or Distrobox container: <code class="language-plaintext highlighter-rouge">toolbox create</code> or <code class="language-plaintext highlighter-rouge">distrobox create</code></li>
+  <li>Enter the container: <code class="language-plaintext highlighter-rouge">toolbox enter</code> or <code class="language-plaintext highlighter-rouge">distrobox enter</code></li>
+  <li>Install your development tools as you normally would (<code class="language-plaintext highlighter-rouge">dnf install</code> or <code class="language-plaintext highlighter-rouge">apt install</code>)</li>
+  <li>Get to work!</li>
+</ol>
+
+<p>The container shares your home directory so your files are easily accessible, but any system changes remain isolated.</p>
+
+<h3 id="system-updates">System Updates</h3>
+
+<p>Updating your system is typically done with one command that updates the entire OS at once:</p>
+
+<ul>
+  <li><strong>Fedora Atomic:</strong> <code class="language-plaintext highlighter-rouge">rpm-ostree upgrade</code></li>
+  <li><strong>openSUSE MicroOS:</strong> <code class="language-plaintext highlighter-rouge">transactional-update</code></li>
+  <li><strong>NixOS:</strong> <code class="language-plaintext highlighter-rouge">nixos-rebuild switch</code></li>
+</ul>
+
+<p>If an update causes issues, you can roll back to a previous version by rebooting and selecting the previous deployment from the boot menu.</p>
+
+<h2 id="the-verdict-are-atomic-distros-worth-it">The Verdict: Are Atomic Distros Worth It?</h2>
+
+<p>Atomic Linux distributions are definitely worth trying if:</p>
+
+<ul>
+  <li>You’re tired of your system breaking after updates.</li>
+  <li>You want better security without constant worry.</li>
+  <li>You appreciate the clean separation between your system and your applications.</li>
+  <li>You’re open to new workflows that may initially feel unfamiliar.</li>
+</ul>
+
+<p>They might not be ideal if:</p>
+
+<ul>
+  <li>You need to install many unusual system packages that aren’t available as Flatpaks.</li>
+  <li>You rely heavily on customizing low-level system components.</li>
+  <li>You’re unwilling to adjust your workflow and mindset about how a Linux system works.</li>
+</ul>
+
+<p>The good news is that these distributions are becoming more accessible with each release. What seemed radical a few years ago is quickly becoming the new norm.</p>
+
+
+  </main>
+  
+  <footer>
+    <p>© 2025 Emryk™ - Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+  </footer>
+</body>
+</html>

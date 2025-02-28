@@ -1,0 +1,127 @@
+<h1 id="installing-jekyll-on-an-immutable-linux-distribution-eg-aurora-linuxfedora-silverblue-with-toolbox">Installing Jekyll on an Immutable Linux Distribution (e.g., Aurora Linux/Fedora Silverblue) with Toolbox</h1>
+
+<p>This guide provides a robust method for installing and using Jekyll on an immutable Linux distribution, such as Aurora Linux (assuming it’s based on Fedora Silverblue/Kinoite) or any Fedora-based system using Toolbox. It utilizes <code class="language-plaintext highlighter-rouge">rbenv</code> for Ruby version management within the Toolbox container.</p>
+
+<p><strong>Assumptions:</strong></p>
+
+<ul>
+  <li>You are using an immutable Linux distribution that supports Toolbox.</li>
+  <li>You have Toolbox installed and configured.</li>
+  <li>You have a basic understanding of the command line.</li>
+</ul>
+
+<p><strong>Steps:</strong></p>
+
+<ol>
+  <li>
+    <p><strong>Enter Toolbox:</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>toolbox enter
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Install Development Dependencies:</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf <span class="nb">install</span> <span class="nt">-y</span> @development-tools zlib-devel libyaml-devel openssl-devel readline-devel bzip2-devel autoconf automake libtool bison sqlite-devel
+</code></pre></div>    </div>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">@development-tools</code>: Installs essential build tools (compiler, etc.).</li>
+      <li><code class="language-plaintext highlighter-rouge">-devel</code> packages: Provide headers and libraries for compiling Ruby.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Install rbenv:</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+<span class="nb">echo</span> <span class="s1">'export PATH="$HOME/.rbenv/bin:$PATH"'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">echo</span> <span class="s1">'eval "$(rbenv init - bash)"'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">source</span> ~/.bashrc
+</code></pre></div>    </div>
+    <ul>
+      <li>Clones rbenv into your home directory.</li>
+      <li>Configures your shell to use rbenv.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Install ruby-build (rbenv plugin):</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/rbenv/ruby-build.git <span class="s2">"</span><span class="si">$(</span>rbenv root<span class="si">)</span><span class="s2">"</span>/plugins/ruby-build
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Install a Ruby Version:</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv <span class="nb">install</span> <span class="nt">--list</span>  <span class="c"># (Optional) List available Ruby versions</span>
+rbenv <span class="nb">install </span>3.2.2  <span class="c"># Replace with your desired (or latest stable) Ruby version</span>
+rbenv global 3.2.2  <span class="c"># Set as the default for this Toolbox</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Verify Ruby Installation:</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby <span class="nt">-v</span>
+gem <span class="nt">-v</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Install Bundler:</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>bundler
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Install Jekyll and Create a New Site (Option 1: Inside a Git Repo Subdirectory):</strong></p>
+
+    <p>This is the recommended approach if you have an existing Git repository and want to add a Jekyll site <em>within</em> it.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /path/to/your/git/repo  <span class="c"># Replace with the path to your Git repository</span>
+jekyll new my-jekyll-site  <span class="c"># Create the site in a *new* subdirectory</span>
+<span class="nb">cd </span>my-jekyll-site        <span class="c"># Navigate into the new Jekyll site directory</span>
+bundle <span class="nb">install</span>           <span class="c"># Install project dependencies</span>
+bundle <span class="nb">exec </span>jekyll serve  <span class="c"># Start the development server</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Replace <code class="language-plaintext highlighter-rouge">my-jekyll-site</code> with your desired site name.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Install Jekyll and Create a New Site (Option 2: Outside a Git Repo):</strong></p>
+
+    <p>This creates a completely independent Jekyll site.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd</span> ~  <span class="c"># Go to your home directory</span>
+ jekyll new my-new-site
+ <span class="nb">cd </span>my-new-site
+ bundle <span class="nb">install
+ </span>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Install Jekyll in an existing project, but preserve git:</strong></p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /var/home/rhuze/GitIt/Atomic-Linux-Docs
+jekyll new <span class="nt">--blank</span> <span class="nt">--skip-bundle</span> <span class="nb">.</span>
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Initial commit after jekyll init"</span>
+bundle <span class="nb">install
+</span>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p><strong>Important Notes and Best Practices:</strong></p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">bundle exec</code>:</strong> <em>Always</em> use <code class="language-plaintext highlighter-rouge">bundle exec</code> before running Jekyll commands (e.g., <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code>, <code class="language-plaintext highlighter-rouge">bundle exec jekyll build</code>). This ensures you’re using the gems specified in your project’s <code class="language-plaintext highlighter-rouge">Gemfile</code>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Gemfile</code>:</strong>  The <code class="language-plaintext highlighter-rouge">Gemfile</code> and <code class="language-plaintext highlighter-rouge">Gemfile.lock</code> files in your Jekyll project are critical. They define your project’s dependencies.</li>
+  <li><strong>Project Location:</strong>  Choose a location for your Jekyll project within your home directory <em>inside</em> the Toolbox.  You can mount directories from the host if needed.</li>
+  <li><strong>Toolbox Persistence:</strong> rbenv configuration is automatically persistent across Toolbox sessions because it’s added to <code class="language-plaintext highlighter-rouge">~/.bashrc</code>.</li>
+  <li><strong>Troubleshooting:</strong>
+    <ul>
+      <li>If you encounter errors, carefully read the error messages.</li>
+      <li>Ensure <code class="language-plaintext highlighter-rouge">g++</code> is available ( <code class="language-plaintext highlighter-rouge">which g++</code> ) after installing <code class="language-plaintext highlighter-rouge">@development-tools</code>. If not, exit and re-enter Toolbox.</li>
+      <li>For package issues, try <code class="language-plaintext highlighter-rouge">sudo dnf clean all</code> and <code class="language-plaintext highlighter-rouge">sudo dnf makecache</code>.</li>
+    </ul>
+  </li>
+  <li><strong>Multiple Toolboxes:</strong> For complete isolation, create different Toolbox containers for different projects.</li>
+</ul>
+
