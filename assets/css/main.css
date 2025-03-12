@@ -99,3 +99,120 @@ a:hover {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     color: #3a2f28;
 }
+
+/* Special classes for your documentation site */
+/* Frustration meter styling */
+.frustration-meter {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border-left: 4px solid #d9a566;
+}
+
+.frustration-label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #3a2f28;
+}
+
+.frustration-level {
+    height: 10px;
+    background-color: #e0d8cc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.frustration-fill {
+    height: 100%;
+    border-radius: 5px;
+}
+
+.frustration-low {
+    width: 33%;
+    background-color: #5f9ea5;
+}
+
+.frustration-medium {
+    width: 66%;
+    background-color: #d9a566;
+}
+
+.frustration-high {
+    width: 100%;
+    background-color: #c45d3c;
+}
+
+/* Tip box and reality check styling */
+.tip-box, .reality-check, .intro-note {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.tip-box {
+    border-left: 4px solid #5f9ea5;
+}
+
+.reality-check {
+    border-left: 4px solid #c45d3c;
+}
+
+.intro-note {
+    border-left: 4px solid #d9a566;
+    font-size: 1.1rem;
+}
+
+/* Code block styling */
+pre {
+    background-color: #f5f2ed;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+code {
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 0.9rem;
+}
+
+/* Blockquote styling */
+blockquote {
+    margin: 20px 0;
+    padding-left: 20px;
+    border-left: 4px solid #d9a566;
+    color: #5a5552;
+    font-style: italic;
+}
+
+/* List styling */
+ul, ol {
+    margin: 15px 0;
+    padding-left: 30px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .nav-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-button {
+        margin: 5px 0;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+}
