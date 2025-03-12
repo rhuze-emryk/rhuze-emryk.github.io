@@ -1,4 +1,4 @@
-destination: .
+destination: _site
 title: Please Don't Make Me Install Linux
 email: rh@emryk.com
 description: >-
@@ -13,7 +13,6 @@ markdown: kramdown
 sass:
   sass_dir: _sass
   style: compressed
-  implementation: sass-embedded
 theme: minima
 plugins:
   - jekyll-feed
@@ -32,4 +31,4 @@ exclude:
   - node_modules
   - vendor
   - .git
-
+  - website
