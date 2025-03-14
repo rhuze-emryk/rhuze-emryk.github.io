@@ -50,13 +50,3 @@ gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 # do not have a Java counterpart.
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
-# Required for Jekyll 3.9+
-gem "kramdown-parser-gfm"
-gem "csv"
-gem "logger"
-
-# Previous version 
-gem "github-pages", group: :jekyll_plugins
-# gem "jekyll"
-# gem "webrick"
-# gem "sass-embedded", "~> 1.85"  # Explicit version constraint

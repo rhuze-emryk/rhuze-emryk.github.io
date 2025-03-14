@@ -17,6 +17,10 @@ theme: minima
 plugins:
   - jekyll-feed
 permalink: pretty
+feed:
+  title: Please Don't Make Me Install Linux
+  description: A guide for the reluctant, the confused, and those looking for practical solutions to Atomic Linux challenges.
+  path: feed.xml
 
 collections_dir: . # Your collections are in the root directory
 collections:
