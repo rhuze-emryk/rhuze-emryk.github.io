@@ -11,6 +11,8 @@ You've heard Linux is powerful but installation feels overwhelming. Perhaps you'
 
 I'm documenting what I've learned about Atomic Linux distributions (sometimes called immutable distributions) – the practical benefits, the real challenges, and solutions to common problems. This is Linux without unnecessary jargon or the assumption that you already know how everything works.
 
+<a href="/feed.xml" class="rss-button">Subscribe via RSS</a>
+
 ## Who's This For?
 
 - **Accidental Linux Users** — Did your IT department deploy Fedora Silverblue? We'll help you navigate it.
@@ -23,5 +25,6 @@ Whether you're using Fedora Silverblue, Kinoite, openSUSE MicroOS, or any other 
 ## Quick Links
 
 - [Survival Guides](/docs/)
-- [Atomic Distributions Explained](/docs/immutable-distros.md)
+- [Atomic Distributions Explained](/docs/immutable-distros.html)
+- [Setting Up Jellyfin Media Server](/docs/Jellyfin-on-Atomic-distro.html)
 - [GitHub Repository](https://github.com/rhuze-emryk/Atomic-Linux-Docs)

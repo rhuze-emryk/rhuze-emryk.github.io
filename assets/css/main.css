@@ -216,3 +216,33 @@ li {
         font-size: 1.5rem;
     }
 }
+
+/* RSS Button styling */
+.rss-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background-color: #f5f2ed;
+    color: #3a2f28;
+    border: 2px solid #d9a566;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    margin: 10px 0;
+}
+
+.rss-button:hover {
+    background-color: #d9a566;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: #3a2f28;
+}
+
+.rss-icon {
+    width: 16px;
+    height: 16px;
+    fill: #c45d3c;
+}
+
