@@ -1,0 +1,49 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@charset "utf-8";
+
+// Custom variables for warmer colors
+$base-color: #5e3b2c;         // Warm brown
+$text-color: #34302d;          // Dark warm gray
+$background-color: #faf6f0;    // Soft cream
+$accent-color: #d68438;        // Warm amber/orange
+$border-color: #e6d9cc;        // Light taupe
+
+// Import theme styles
+@import "basically-basic";
+
+// Custom overrides for cognitive accessibility
+body {
+  line-height: 1.6;
+  font-size: 1.05em;
+}
+
+.page-content {
+  p, li {
+    margin-bottom: 1.2em;
+  }
+}
+
+// Clearer heading hierarchy
+h1, h2, h3, h4 {
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+// Improved link visibility
+a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  
+  &:hover, &:focus {
+    background-color: lighten($accent-color, 40%);
+  }
+}
+
+// Focus indicators for accessibility
+:focus {
+  outline: 3px solid $accent-color;
+  outline-offset: 2px;
+}

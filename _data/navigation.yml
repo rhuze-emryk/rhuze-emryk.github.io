@@ -1,0 +1,14 @@
+# Main navigation links
+main:
+  - title: Home
+    url: /
+  - title: How-to Guides
+    url: /guides/
+  - title: References
+    url: /references/
+  - title: Reviews
+    url: /reviews/
+  - title: Blog
+    url: /blog/
+  - title: About
+    url: /about/
