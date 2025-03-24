@@ -47,3 +47,63 @@ a {
   outline: 3px solid $accent-color;
   outline-offset: 2px;
 }
+
+// Custom cognitive load indicators
+.meter-bar {
+  height: 10px;
+  background-color: $border-color;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 1em;
+}
+
+.meter-fill {
+  height: 100%;
+  border-radius: 5px;
+
+  &.low {
+    background-color: #4caf50;  // Green
+    width: 33%;
+  }
+
+  &.medium {
+    background-color: #ff9800;  // Orange
+    width: 66%;
+  }
+
+  &.high {
+    background-color: #f44336;  // Red
+    width: 100%;
+  }
+}
+
+// Collection grid styling
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5em;
+  margin: 2em 0;
+
+  .collection-item {
+    background-color: darken($background-color, 3%);
+    border-radius: 5px;
+    padding: 1.5em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+
+    .item-meta {
+      font-size: 0.85em;
+      color: lighten($text-color, 20%);
+      margin-bottom: 0.5em;
+    }
+  }
+}

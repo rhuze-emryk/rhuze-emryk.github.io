@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<main id="main" class="page-content" aria-label="Content">
+  <div class="inner">
+    <article class="entry-wrap">
+      <div class="entry-content">
+        {% if page.cognitive_load %}
+        <div class="notice--info">
+          <h4>Cognitive Load: {{ page.cognitive_load | capitalize }}</h4>
+          <div class="meter-bar">
+            <div class="meter-fill {{ page.cognitive_load }}"></div>
+          </div>
+        </div>
+        {% endif %}
+        
+        {{ content }}
+      </div>
+    </article>
+  </div>
+</main>

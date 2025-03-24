@@ -1,17 +1,46 @@
 ---
 layout: home
-paginate: true
-alt_title: "NeuroFlow Labs"
-sub_title: "Making technology work with your brain, not against it"
-introduction: |
-  A guide for those who face cognitive challenges when dealing with technology. 
-  We're here to help you navigate complex tech without unnecessary jargon or 
-  overwhelming information.
-actions:
-  - label: "How-to Guides"
-    icon: github
-    url: "/guides/"
-  - label: "References"
-    icon: download
-    url: "/references/"
+title: NeuroFlow Labs
+subtitle: Making technology work with your brain, not against it
 ---
+
+A guide for those who face cognitive challenges when dealing with technology. We're here to help you navigate complex tech without unnecessary jargon or overwhelming information.
+
+## Latest Guides
+
+<div class="collection-grid">
+  {% for guide in site.guides limit:3 %}
+    <div class="collection-item">
+      <h3><a href="{{ guide.url | relative_url }}">{{ guide.title }}</a></h3>
+      {% if guide.cognitive_load %}
+      <div class="item-meta">Cognitive Load: {{ guide.cognitive_load | capitalize }}</div>
+      <div class="meter-bar">
+        <div class="meter-fill {{ guide.cognitive_load }}"></div>
+      </div>
+      {% endif %}
+      <p>{{ guide.excerpt | strip_html | truncate: 120 }}</p>
+      <a href="{{ guide.url | relative_url }}" class="btn">Read More</a>
+    </div>
+  {% endfor %}
+</div>
+
+{% if site.guides.size > 3 %}
+<a href="{{ '/guides/' | relative_url }}" class="btn">View All Guides</a>
+{% endif %}
+
+## Recent Posts
+
+<div class="collection-grid">
+  {% for post in site.posts limit:3 %}
+    <div class="collection-item">
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <div class="item-meta">{{ post.date | date: "%B %-d, %Y" }}</div>
+      <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+      <a href="{{ post.url | relative_url }}" class="btn">Read More</a>
+    </div>
+  {% endfor %}
+</div>
+
+{% if site.posts.size > 3 %}
+<a href="{{ '/blog/' | relative_url }}" class="btn">View All Posts</a>
+{% endif %}
