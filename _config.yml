@@ -1,7 +1,7 @@
 # Site settings
 title: NeuroFlow Labs
 description: Making technology work with your brain, not against it
-email: your-email@example.com
+email: rh@neuroflowlabs.org
 baseurl: ""
 url: "https://rhuze-emryk.github.io"
 logo: "/assets/images/logo.png"
