@@ -1,0 +1,58 @@
+---
+layout: default
+---
+
+
+  {{ page.title }}
+  {{ page.subtitle }}
+  {{ content }}
+
+
+{% if site.guides.size > 0 %}
+
+  Latest Guides
+  
+    {% for guide in site.guides limit:3 %}
+      
+        {{ guide.title }}
+        {% if guide.cognitive_load %}
+        Cognitive Load: {{ guide.cognitive_load | capitalize }}
+        
+          
+        
+        {% endif %}
+        {{ guide.excerpt | strip_html | truncate: 120 }}
+        Read More
+      
+    {% endfor %}
+  
+  
+  {% if site.guides.size > 3 %}
+  
+    View All Guides
+  
+  {% endif %}
+
+{% endif %}
+
+{% if site.posts.size > 0 %}
+
+  Recent Posts
+  
+    {% for post in site.posts limit:3 %}
+      
+        {{ post.title }}
+        {{ post.date | date: "%B %-d, %Y" }}
+        {{ post.excerpt | strip_html | truncate: 120 }}
+        Read More
+      
+    {% endfor %}
+  
+  
+  {% if site.posts.size > 3 %}
+  
+    View All Posts
+  
+  {% endif %}
+
+{% endif %}
