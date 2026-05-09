@@ -12,15 +12,18 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #090909;
-      --surface:   #111113;
-      --border:    #1e1e22;
-      --accent:    #00d4aa;
-      --accent-dim:#00d4aa22;
-      --text:      #e8e8ea;
-      --muted:     #6b6b75;
-      --mono:      'JetBrains Mono', monospace;
-      --sans:      'Inter', sans-serif;
+      --bg:            #0A1628;
+      --surface:       #0F1F35;
+      --border:        #1A2F4A;
+      --accent:        #4DA8FF;
+      --accent-dim:    #1A2F4A;
+      --accent-warm:   #F5A623;
+      --accent-muted:  #7CC0FF;
+      --text:          #E8EEF5;
+      --muted:         #9BA8BD;
+      --text-tertiary: #5A6A82;
+      --mono:          'JetBrains Mono', monospace;
+      --sans:          'Inter', sans-serif;
     }
 
     html, body {
@@ -107,7 +110,7 @@
       font-size: 0.72rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--accent-muted);
       background: var(--accent-dim);
       border: 1px solid var(--accent)44;
       padding: 0.35rem 0.85rem;
@@ -121,7 +124,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--accent);
+      background: var(--accent-muted);
       animation: pulse 2s ease-in-out infinite;
     }
 
@@ -189,13 +192,13 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--bg);
-      background: var(--accent);
+      background: var(--accent-warm);
       padding: 0.7rem 1.6rem;
       border-radius: 2px;
       text-decoration: none;
-      transition: opacity 0.2s;
+      transition: background-color 0.15s, transform 0.15s;
     }
-    .cta-primary:hover { opacity: 0.85; }
+    .cta-primary:hover { background: #D8881A; transform: translateY(-1px); }
 
     .cta-secondary {
       display: inline-block;
@@ -203,11 +206,11 @@
       font-size: 0.82rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--text);
       text-decoration: none;
       transition: color 0.2s;
     }
-    .cta-secondary:hover { color: var(--text); }
+    .cta-secondary:hover { color: var(--muted); }
 
     /* ── DIVIDER ── */
     .section-divider {
@@ -240,7 +243,7 @@
       font-size: 0.68rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--accent);
+      color: var(--text-tertiary);
       white-space: nowrap;
       padding-top: 0.1rem;
     }
@@ -284,6 +287,9 @@
     }
     .footer-right a:hover { color: var(--accent); }
 
+    .tagline a { color: var(--accent); text-decoration: none; transition: color 0.15s; }
+    .tagline a:hover { color: var(--accent-muted); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 560px) {
       header { padding: 1.25rem 1.25rem; }
@@ -309,10 +315,10 @@
 
       <p class="tagline">
         GPU-ready cloud workstations for ML teams — delivered as immutable,
-        automatically-updated OS images. Built on <a href="https://universal-blue.org/" style="color:var(--accent);text-decoration:none">Universal Blue</a>'s
-        kinoite-main — a derivative of <a href="https://fedoraproject.org/kinoite/" style="color:var(--accent);text-decoration:none">Fedora Kinoite</a>, the official
-        <a href="https://kde.org/plasma-desktop/" style="color:var(--accent);text-decoration:none">KDE Plasma</a> variant of
-        <a href="https://fedoraproject.org/" style="color:var(--accent);text-decoration:none">Fedora</a>. Ready on boot.
+        automatically-updated OS images. Built on <a href="https://universal-blue.org/">Universal Blue</a>'s
+        kinoite-main — a derivative of <a href="https://fedoraproject.org/kinoite/">Fedora Kinoite</a>, the official
+        <a href="https://kde.org/plasma-desktop/">KDE Plasma</a> variant of
+        <a href="https://fedoraproject.org/">Fedora</a>. Ready on boot.
       </p>
 
       <div class="chips">
@@ -336,7 +342,7 @@
         <span class="status-text">
           Milestone 1 complete — base image builds green in CI, NVIDIA Open driver stack
           verified end-to-end. Public image at
-          <code style="font-family:var(--mono);font-size:0.8em;color:var(--text)">ghcr.io/rhuze-emryk/emryk-ml</code>.
+          <code style="font-family:var(--mono);font-size:0.8em;color:var(--accent)">ghcr.io/rhuze-emryk/emryk-ml</code>.
           Pilot program opening 2026; customer-facing product launching when the pilots prove out.
         </span>
       </div>
