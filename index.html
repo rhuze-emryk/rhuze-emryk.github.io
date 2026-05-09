@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emryk — ML Workstations</title>
+  <meta name="description" content="GPU-ready cloud workstations for ML teams, delivered as managed immutable OS images." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #090909;
+      --surface:   #111113;
+      --border:    #1e1e22;
+      --accent:    #00d4aa;
+      --accent-dim:#00d4aa22;
+      --text:      #e8e8ea;
+      --muted:     #6b6b75;
+      --mono:      'JetBrains Mono', monospace;
+      --sans:      'Inter', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── GRID BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── LAYOUT ── */
+    header, main, footer { position: relative; z-index: 1; }
+
+    header {
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: var(--mono);
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+
+    .nav-link {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+    }
+
+    .hero {
+      max-width: 680px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid var(--accent)44;
+      padding: 0.35rem 0.85rem;
+      border-radius: 2px;
+      margin-bottom: 2rem;
+    }
+
+    .badge::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .tagline {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    /* ── FEATURE CHIPS ── */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 3rem;
+    }
+
+    .chip {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── CTA ── */
+    .cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-primary {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 0.7rem 1.6rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .cta-primary:hover { opacity: 0.85; }
+
+    .cta-secondary {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .cta-secondary:hover { color: var(--text); }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      width: 100%;
+      max-width: 680px;
+      margin: 3.5rem auto 0;
+      border: none;
+      border-top: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── STATUS STRIP ── */
+    .status-strip {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 2rem auto 0;
+      padding: 1.25rem 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+
+    .status-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      white-space: nowrap;
+      padding-top: 0.1rem;
+    }
+
+    .status-text {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 1.5rem 2.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .footer-left {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-right a {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .footer-right a:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 560px) {
+      header { padding: 1.25rem 1.25rem; }
+      main { padding: 3rem 1.25rem; }
+      footer { padding: 1.25rem; flex-direction: column; align-items: flex-start; }
+      .status-strip { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="logo" href="/">emryk<span>.</span></a>
+    <a class="nav-link" href="mailto:hello@emryk.com">hello@emryk.com</a>
+  </header>
+
+  <main>
+    <div class="hero">
+
+      <div class="badge">In Development</div>
+
+      <h1>ML Workstations,<br /><em>as Managed Images</em></h1>
+
+      <p class="tagline">
+        GPU-ready cloud workstations for ML teams — delivered as immutable,
+        automatically-updated OS images. Built on Fedora Atomic. Ready on boot.
+      </p>
+
+      <div class="chips">
+        <span class="chip">bootc / rpm-ostree</span>
+        <span class="chip">NVIDIA drivers baked in</span>
+        <span class="chip">CUDA 13 ready</span>
+        <span class="chip">OCI-native</span>
+        <span class="chip">cosign verified</span>
+        <span class="chip">OVHCloud GPU</span>
+      </div>
+
+      <div class="cta-group">
+        <a class="cta-primary" href="mailto:hello@emryk.com">Request Early Access</a>
+        <a class="cta-secondary" href="https://github.com/rhuze-emryk/emryk-ml">View on GitHub →</a>
+      </div>
+
+      <hr class="section-divider" />
+
+      <div class="status-strip">
+        <span class="status-label">Status</span>
+        <span class="status-text">
+          Milestone 1 complete — base image builds green in CI, NVIDIA driver verified on
+          Quadro RTX 5000 hardware. Public image at
+          <code style="font-family:var(--mono);font-size:0.8em;color:var(--text)">ghcr.io/rhuze-emryk/emryk-ml</code>.
+          Customer-facing product launching later in 2026.
+        </span>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <span class="footer-left">© 2026 Emryk</span>
+    <div class="footer-right">
+      <a href="https://github.com/rhuze-emryk/emryk-ml">GitHub</a>
+      <a href="mailto:hello@emryk.com">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>
